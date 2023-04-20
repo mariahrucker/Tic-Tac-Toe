@@ -1,6 +1,3 @@
-Implementation of Tic Tac Toe game in Python. 
-It includes a game board, player moves, win detection, and an AI opponent using the minimax algorithm.
-
 ```python
 import random
 
@@ -106,21 +103,5 @@ def play_game():
 
 play_game()
 ```
-
-Explanation:
-
-1. `print_board()` function prints the game board on the console.
-2. `get_empty_spaces()` function returns a list of empty spaces on the board.
-3. `is_win()` function checks if a player has won the game.
-4. `evaluate()` function evaluates the board and returns a score for the AI's move.
-5. `minimax()` function implements the minimax algorithm for the AI's move.
-6. `get_best_move()` function returns the best move for the AI to make based on the current board.
-7. `play_game()` function initiates and plays the game.
-
-The game board is represented by a 2D list of 3x3 size, where "X" represents the player's move, "O" represents the AI's move, and " " (empty string) represents an empty space on the board.
-
-In the `play_game()` function, the player enters their move by specifying the row and column number of the board. The function checks if the move is valid, i.e., if the space is empty, and adds the move to the board if it is valid. It then checks if the player has won the game or if the game is tied. If the game is still ongoing, the AI calculates its best move using the `get_best_move()` function and adds it to the board. It then checks if the AI has won the game or if the game is tied. If the game is still ongoing, the process continues until the game is over.
-
-The AI opponent uses the minimax algorithm to calculate the best move. This algorithm recursively explores all possible moves to a certain depth and returns the score for each move. The score is evaluated using the `evaluate()` function. The AI opponent chooses the move with the highest score.
 
 Overall, this implementation of Tic Tac Toe game in Python is quite complex and involves multiple functions and algorithms. It provides a good example of how to use the minimax algorithm in a game-playing AI.
