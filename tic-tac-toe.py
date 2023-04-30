@@ -1,10 +1,11 @@
-```python
 import random
 
+# Prints the game board
 def print_board(board):
     for i in range(3):
         print("|".join(board[i]))
 
+# Returns a list of coordinates for all empty spaces on the board
 def get_empty_spaces(board):
     empty_spaces = []
     for i in range(3):
@@ -13,18 +14,24 @@ def get_empty_spaces(board):
                 empty_spaces.append((i, j))
     return empty_spaces
 
+# Checks if the specified player has won the game
 def is_win(board, player):
+    # Check rows
     for i in range(3):
         if board[i][0] == player and board[i][1] == player and board[i][2] == player:
             return True
+    # Check columns
+    for i in range(3):
         if board[0][i] == player and board[1][i] == player and board[2][i] == player:
             return True
+    # Check diagonals
     if board[0][0] == player and board[1][1] == player and board[2][2] == player:
         return True
     if board[0][2] == player and board[1][1] == player and board[2][0] == player:
         return True
     return False
 
+# Evaluates the current state of the board from the perspective of the AI player
 def evaluate(board):
     if is_win(board, "O"):
         return 1
@@ -33,7 +40,9 @@ def evaluate(board):
     else:
         return 0
 
+# Recursive function that implements the minimax algorithm
 def minimax(board, depth, is_maximizing):
+    # Base case: check if the game is over and return the score
     if is_win(board, "O"):
         return 1
     elif is_win(board, "X"):
@@ -41,6 +50,7 @@ def minimax(board, depth, is_maximizing):
     empty_spaces = get_empty_spaces(board)
     if not empty_spaces:
         return 0
+    # Recursive case: evaluate all possible moves and choose the best one
     if is_maximizing:
         best_score = -float("inf")
         for i, j in empty_spaces:
@@ -58,6 +68,7 @@ def minimax(board, depth, is_maximizing):
             best_score = min(score, best_score)
         return best_score
 
+# Uses the minimax algorithm to determine the best move for the AI player
 def get_best_move(board):
     empty_spaces = get_empty_spaces(board)
     best_score = -float("inf")
@@ -71,37 +82,11 @@ def get_best_move(board):
             best_move = (i, j)
     return best_move
 
+# Main game loop
 def play_game():
     board = [[" " for _ in range(3)] for _ in range(3)]
     print("Welcome to Tic Tac Toe!")
     print_board(board)
     while True:
-        player_row = int(input("Enter row number (1-3): ")) - 1
-        player_col = int(input("Enter column number (1-3): ")) - 1
-        if board[player_row][player_col] == " ":
-            board[player_row][player_col] = "X"
-            print_board(board)
-            if is_win(board, "X"):
-                print("Congratulations, you win!")
-                return
-            if not get_empty_spaces(board):
-                print("It's a tie!")
-                return
-            print("AI is thinking...")
-            ai_row, ai_col = get_best_move(board)
-
-            board[ai_row][ai_col] = "O"
-            print_board(board)
-            if is_win(board, "O"):
-                print("Sorry, you lose!")
-                return
-            if not get_empty_spaces(board):
-                print("It's a tie!")
-                return
-        else:
-            print("That space is already taken, please try again.")
-
-play_game()
-```
-
-Overall, this implementation of Tic Tac Toe game in Python is quite complex and involves multiple functions and algorithms. It provides a good example of how to use the minimax algorithm in a game-playing AI.
+        # Ask the player to make a move
+        player_row = int(input("Enter row
