@@ -1,5 +1,29 @@
 import random
 
+# Add a multiplayer to the code with difficulty level 
+def play_game(difficulty_level):
+    board = [[" " for _ in range(3)] for _ in range(3)]
+    print("Welcome to Tic Tac Toe!")
+    print_board(board)
+    turn = 0
+    while True:
+        if turn % 2 == 0:
+            player1_row = int(input("Player 1 - Enter row number (1-3): ")) - 1
+            player1_col = int(input("Player 1 - Enter column number (1-3): ")) - 1
+            if board[player1_row][player1_col] == " ":
+                board[player1_row][player1_col] = "X"
+                print_board(board)
+                if is_win(board, "X"):
+                    print("Congratulations, Player 1 wins!")
+                    return
+                if not get_empty_spaces(board):
+                    print("It's a tie!")
+                    return
+            else:
+                print("That space is already taken, please try again.")
+        else:
+            if difficulty_level == "easy":
+
 # Prints the game board
 def print_board(board):
     for i in range(3):
@@ -88,5 +112,29 @@ def play_game():
     print("Welcome to Tic Tac Toe!")
     print_board(board)
     while True:
-        # Ask the player to make a move
-        player_row = int(input("Enter row
+        player_row = int(input("Enter row number (1-3): ")) - 1
+        player_col = int(input("Enter column number (1-3): ")) - 1
+        if board[player_row][player_col] == " ":
+            board[player_row][player_col] = "X"
+            print_board(board)
+            if is_win(board, "X"):
+                print("Congratulations, you win!")
+                return
+            if not get_empty_spaces(board):
+                print("It's a tie!")
+                return
+            print("AI is thinking...")
+            ai_row, ai_col = get_best_move(board)
+
+            board[ai_row][ai_col] = "O"
+            print_board(board)
+            if is_win(board, "O"):
+                print("Sorry, you lose!")
+                return
+            if not get_empty_spaces(board):
+                print("It's a tie!")
+                return
+        else:
+            print("That space is already taken, please try again.")
+
+play_game()
