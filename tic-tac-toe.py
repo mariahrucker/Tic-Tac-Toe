@@ -1,62 +1,82 @@
 import random
+import argparse
 
-# Add a multiplayer to the code with difficulty level 
-def play_game(difficulty_level):
+# Add a multiplayer to the code with difficulty level
+
+
+def play_game_difficulty(difficulty_level) -> None:
+    """Tic Tac Toe game with difficulty level"""
+
     board = [[" " for _ in range(3)] for _ in range(3)]
     print("Welcome to Tic Tac Toe!")
     print_board(board)
     turn = 0
+
     while True:
         if turn % 2 == 0:
-            player1_row = int(input("Player 1 - Enter row number (1-3): ")) - 1
-            player1_col = int(input("Player 1 - Enter column number (1-3): ")) - 1
+            player1_row, player1_col = get_move()
+
             if board[player1_row][player1_col] == " ":
                 board[player1_row][player1_col] = "X"
                 print_board(board)
+
                 if is_win(board, "X"):
                     print("Congratulations, Player 1 wins!")
                     return
+
                 if not get_empty_spaces(board):
                     print("It's a tie!")
                     return
             else:
                 print("That space is already taken, please try again.")
-        else:
-            if difficulty_level == "easy":
+        # else:
+        #    if difficulty_level == "easy":
 
-# Prints the game board
-def print_board(board):
-    for i in range(3):
-        print("|".join(board[i]))
 
-# Returns a list of coordinates for all empty spaces on the board
-def get_empty_spaces(board):
-    empty_spaces = []
-    for i in range(3):
-        for j in range(3):
-            if board[i][j] == " ":
-                empty_spaces.append((i, j))
+def print_board(board: list) -> None:
+    """Prints the game board"""
+    for row in board:
+        print("|".join(row))
+
+
+def update_board(board: list, row: int, col: int, player: str) -> None:
+    """Updates the game board with the player's move"""
+    board[row][col] = player
+
+
+def get_empty_spaces(board: list) -> list:
+    """Returns a list of coordinates for all empty spaces on the board"""
+    empty_spaces = [
+        (row, col) for row in range(3) for col in range(3) if board[row][col] == " "
+    ]
+
     return empty_spaces
 
-# Checks if the specified player has won the game
-def is_win(board, player):
+
+def is_win(board: list, player: str) -> bool:
+    """Checks if the specified player has won the game"""
     # Check rows
-    for i in range(3):
-        if board[i][0] == player and board[i][1] == player and board[i][2] == player:
+    for row in board:
+        if row[0] == player and row[1] == player and row[2] == player:
             return True
+
     # Check columns
     for i in range(3):
         if board[0][i] == player and board[1][i] == player and board[2][i] == player:
             return True
+
     # Check diagonals
     if board[0][0] == player and board[1][1] == player and board[2][2] == player:
         return True
+
     if board[0][2] == player and board[1][1] == player and board[2][0] == player:
         return True
+
     return False
 
-# Evaluates the current state of the board from the perspective of the AI player
-def evaluate(board):
+
+def evaluate(board: list):
+    """Evaluates the current state of the board from the perspective of the AI player"""
     if is_win(board, "O"):
         return 1
     elif is_win(board, "X"):
@@ -64,8 +84,9 @@ def evaluate(board):
     else:
         return 0
 
-# Recursive function that implements the minimax algorithm
-def minimax(board, depth, is_maximizing):
+
+def minimax(board: list, depth: int, is_maximizing: bool):
+    """Minimax algorithm for AI player"""
     # Base case: check if the game is over and return the score
     if is_win(board, "O"):
         return 1
@@ -74,12 +95,13 @@ def minimax(board, depth, is_maximizing):
     empty_spaces = get_empty_spaces(board)
     if not empty_spaces:
         return 0
+
     # Recursive case: evaluate all possible moves and choose the best one
     if is_maximizing:
         best_score = -float("inf")
         for i, j in empty_spaces:
             board[i][j] = "O"
-            score = minimax(board, depth+1, False)
+            score = minimax(board, depth + 1, False)
             board[i][j] = " "
             best_score = max(score, best_score)
         return best_score
@@ -87,54 +109,104 @@ def minimax(board, depth, is_maximizing):
         best_score = float("inf")
         for i, j in empty_spaces:
             board[i][j] = "X"
-            score = minimax(board, depth+1, True)
+            score = minimax(board, depth + 1, True)
             board[i][j] = " "
             best_score = min(score, best_score)
         return best_score
 
-# Uses the minimax algorithm to determine the best move for the AI player
-def get_best_move(board):
+
+def get_best_move(board: list) -> tuple:
+    """Uses the minimax algorithm to determine the best move for the AI player"""
     empty_spaces = get_empty_spaces(board)
     best_score = -float("inf")
     best_move = None
-    for i, j in empty_spaces:
-        board[i][j] = "O"
+
+    for row, column in empty_spaces:
+        board[row][column] = "O"
         score = minimax(board, 0, False)
-        board[i][j] = " "
+        board[row][column] = " "
+
         if score > best_score:
             best_score = score
-            best_move = (i, j)
+            best_move = (row, column)
+
     return best_move
 
-# Main game loop
-def play_game():
+
+def get_move():
+    """Gets the player's move and validates it"""
+
+    while True:
+        player_row = input("Enter row number (1-3): ")
+
+        if not player_row.isdigit() or int(player_row) not in range(1, 4):
+            print("Invalid row number, please try again.")
+            continue
+        else:
+            player_row = int(player_row) - 1
+            break
+
+    while True:
+        player_col = input("Enter column number (1-3): ")
+
+        if not player_col.isdigit() or int(player_col) not in range(1, 4):
+            print("Invalid column number, please try again.")
+            continue
+        else:
+            player_col = int(player_col) - 1
+            break
+
+    return player_row, player_col
+
+
+def is_valid_move(board: list, row: int, col: int) -> bool:
+    """Checks if the player's move is valid"""
+    if board[row][col] != " ":
+        return False
+
+    return True
+
+
+# Main Game Loop
+def play_game() -> None:
+    """Tic Tac Toe game with AI"""
     board = [[" " for _ in range(3)] for _ in range(3)]
+
     print("Welcome to Tic Tac Toe!")
     print_board(board)
+
     while True:
-        player_row = int(input("Enter row number (1-3): ")) - 1
-        player_col = int(input("Enter column number (1-3): ")) - 1
-        if board[player_row][player_col] == " ":
-            board[player_row][player_col] = "X"
+        player_row, player_col = get_move()
+
+        if is_valid_move(board, player_row, player_col):
+            update_board(board, player_row, player_col, "X")
             print_board(board)
+
             if is_win(board, "X"):
                 print("Congratulations, you win!")
-                return
+                break
+
             if not get_empty_spaces(board):
                 print("It's a tie!")
-                return
+                break
+
             print("AI is thinking...")
             ai_row, ai_col = get_best_move(board)
 
-            board[ai_row][ai_col] = "O"
+            update_board(board, ai_row, ai_col, "O")
             print_board(board)
+
             if is_win(board, "O"):
                 print("Sorry, you lose!")
-                return
+                break
+
             if not get_empty_spaces(board):
                 print("It's a tie!")
-                return
+                break
         else:
-            print("That space is already taken, please try again.")
+            print("Space is already taken, please try again.")
+            print_board(board)
 
-play_game()
+
+if __name__ == "__main__":
+    play_game()
