@@ -16,8 +16,8 @@ def play_game_difficulty(difficulty_level) -> None:
         if turn % 2 == 0:
             player1_row, player1_col = get_move()
 
-            if board[player1_row][player1_col] == " ":
-                board[player1_row][player1_col] = "X"
+            if is_valid_move(board, player1_row, player1_col):
+                update_board(board, player1_row, player1_col, "X")
                 print_board(board)
 
                 if is_win(board, "X"):
@@ -29,6 +29,7 @@ def play_game_difficulty(difficulty_level) -> None:
                     return
             else:
                 print("That space is already taken, please try again.")
+                print_board(board)
         # else:
         #    if difficulty_level == "easy":
 
