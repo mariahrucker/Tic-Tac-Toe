@@ -6,31 +6,31 @@ In this Python implementation of the classic game Tic Tac Toe, players and an AI
 
 ### `print_board()`
 
-This function prints the current state of the game board on the console.
+Prints the current state of the game board on the console.
 
 ### `get_empty_spaces()`
 
-This function returns a list of empty spaces on the board.
+Returns a list of empty spaces on the board.
 
 ### `is_win()`
 
-This function checks if a player has won the game.
+Checks if a player has won the game.
 
 ### `evaluate()`
 
-This function evaluates the board and returns a score for the AI's move.
+Evaluates the board and returns a score for the AI's move.
 
 ### `minimax()`
 
-This function implements the minimax algorithm for the AI's move.
+Implements the minimax algorithm for the AI's move.
 
 ### `get_best_move()`
 
-This function returns the best move for the AI to make based on the current board.
+Returns the best move for the AI to make based on the current board.
 
 ### `play_game()`
 
-This function initiates and plays the game. The player enters their move by specifying the row and column number of the board. The function checks if the move is valid and adds it to the board if it is valid. It then checks if the player has won the game or if the game is tied. If the game is still ongoing, the AI calculates its best move using the `get_best_move()` function and adds it to the board. It then checks if the AI has won the game or if the game is tied. If the game is still ongoing, the process continues until the game is over.
+Initiates and plays the game. The player enters their move by specifying the row and column number of the board. The function checks if the move is valid and adds it to the board if it is valid. It then checks if the player has won the game or if the game is tied. If the game is still ongoing, the AI calculates its best move using the `get_best_move()` function and adds it to the board. It then checks if the AI has won the game or if the game is tied. If the game is still ongoing, the process continues until the game is over.
 
 ## Board Representation
 
@@ -64,7 +64,7 @@ In this example, the player (represented by "X") has made the first move in the 
 
 ## Requirements
 
-This implementation of Tic Tac Toe requires Python 3.x.
+Implementation of Tic Tac Toe requires Python 3.x.
 
 ## Installation
 
@@ -72,7 +72,7 @@ To use this implementation of Tic Tac Toe, simply clone the repository and impor
 
 ## License
 
-This implementation of Tic Tac Toe is licensed under the MIT License. See the LICENSE file for more information.
+Implementation of Tic Tac Toe is licensed under the MIT License. See the LICENSE file for more information.
 
 ## Contributing
 
@@ -80,7 +80,7 @@ Contributions to this implementation of Tic Tac Toe are welcome! If you find a b
 
 ## Credits
 
-This implementation of Tic Tac Toe was created by Mariah Rucker.
+Implementation of Tic Tac Toe was created by Mariah Rucker.
 
 ## Contact
 
@@ -88,4 +88,4 @@ If you have any questions or concerns, please feel free to contact Mariah Rucker
 
 ## Conclusion
 
-This Python implementation of Tic Tac Toe is a fun and simple game that can be played on the console. It uses the minimax algorithm to provide a challenging opponent for the player. Try it out and see if you can beat the AI!
+Python implementation of Tic Tac Toe is a fun and simple game that can be played on the console. It uses the minimax algorithm to provide a challenging opponent for the player. Try it out and see if you can beat the AI!
