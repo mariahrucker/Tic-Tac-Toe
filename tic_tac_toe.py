@@ -44,33 +44,37 @@ class Game:
 
         return empty_spaces
 
-    def is_win(self, player: str) -> bool:
+    def is_win(self, player_symbol: str) -> bool:
         """Checks if the specified player has won the game"""
         # Check rows
         for row in self.board:
-            if row[0] == player and row[1] == player and row[2] == player:
+            if (
+                row[0] == player_symbol
+                and row[1] == player_symbol
+                and row[2] == player_symbol
+            ):
                 return True
 
         # Check columns
         for i in range(3):
             if (
-                self.board[0][i] == player
-                and self.board[1][i] == player
-                and self.board[2][i] == player
+                self.board[0][i] == player_symbol
+                and self.board[1][i] == player_symbol
+                and self.board[2][i] == player_symbol
             ):
                 return True
 
         # Check diagonals
         if (
-            self.board[0][0] == player
-            and self.board[1][1] == player
-            and self.board[2][2] == player
+            self.board[0][0] == player_symbol
+            and self.board[1][1] == player_symbol
+            and self.board[2][2] == player_symbol
         ):
             return True
         if (
-            self.board[0][2] == player
-            and self.board[1][1] == player
-            and self.board[2][0] == player
+            self.board[0][2] == player_symbol
+            and self.board[1][1] == player_symbol
+            and self.board[2][0] == player_symbol
         ):
             return True
 
