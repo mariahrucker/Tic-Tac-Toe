@@ -1,6 +1,6 @@
 # Tic Tac Toe Game
 
-This is a Python implementation of the classic Tic Tac Toe game. The game is played on a 3x3 board, where the player and the AI opponent take turns placing their moves on the board. The first player to get three in a row wins the game.
+In this Python implementation of the classic game Tic Tac Toe, players and an AI opponent take turns placing their moves on a 3x3 board. The first player to make three consecutive marks in a row wins the game.
 
 ## Functions
 
