@@ -70,6 +70,20 @@ Implementation of Tic Tac Toe requires Python 3.x.
 
 To use this implementation of Tic Tac Toe, simply clone the repository and import the functions into your Python environment.
 
+# Features Development 
+
+The game could be further developed by adding features such as:
+
+1. An option to adjust the difficulty of the AI (e.g. beginner, intermediate, and expert levels)
+
+2. A graphical user interface (GUI) to make the game more interactive
+
+3. An option to play against another human player over a network
+
+4. An option to save and load games
+
+5. Keep track of wins and losses for players
+
 ## License
 
 Implementation of Tic Tac Toe is licensed under the MIT License. See the LICENSE file for more information.
