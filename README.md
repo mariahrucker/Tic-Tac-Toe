@@ -7,6 +7,7 @@ In this Python implementation of the classic game Tic Tac Toe, players and an AI
 
 ## Running
 
+
 The program is run with the command line and can be called with a -d flag to set the difficulty, a -p flag to play against a human, and a -h flag for help.
 
 * Playing with the AI (difficulty set to hard by default)
@@ -140,6 +141,7 @@ python --version
 
 To use this implementation of Tic Tac Toe, simply clone the repository and import the functions into your Python environment.
 
+
 1. Open your terminal 
 2. Navigate to the directory where you would like to clone the repository. 
 3. Run the command: 
@@ -155,6 +157,7 @@ git clone https://github.com/mariahrucker/Tic-Tac-Toe
 from Tic-Tac-Toe import *
 import Tic-Tac-Toe.py
 ```
+
 
 # Features Development
 
