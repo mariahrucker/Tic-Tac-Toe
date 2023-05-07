@@ -122,11 +122,13 @@ Implementation of Tic Tac Toe is licensed under the MIT License. See the LICENSE
 
 ## Contributing
 
+**Contributor:** Mauricio Guerrero [@Mg4145](https://github.com/mg4145)
+
 Contributions to this implementation of Tic Tac Toe are welcome! If you find a bug, have a feature request, or want to contribute code, please open an issue or pull request on the GitHub repository.
 
 ## Credits
 
-Implementation of Tic Tac Toe was created by Mariah Rucker.
+Implementation of Tic Tac Toe was created by Mariah Rucker. 
 
 ## Contact
 
