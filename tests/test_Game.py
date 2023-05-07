@@ -1,10 +1,12 @@
+from tic_tac_toe import Game
+from tic_tac_toe import Player
 import unittest
 from unittest.mock import patch
-
-from tic_tac_toe import Player
-from tic_tac_toe import Game
 import io
 import sys
+import os
+
+sys.path.insert(0, os.path.abspath(".."))
 
 
 def reset_board(board: list) -> None:

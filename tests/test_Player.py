@@ -1,5 +1,9 @@
 import unittest
 from tic_tac_toe import Player
+import sys
+import os
+
+sys.path.insert(0, os.path.abspath(".."))
 
 
 class TestPlayer(unittest.TestCase):
