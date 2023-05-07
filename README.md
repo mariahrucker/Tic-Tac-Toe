@@ -2,6 +2,38 @@
 
 In this Python implementation of the classic game Tic Tac Toe, players and an AI opponent take turns placing their moves on a 3x3 board. The first player to make three consecutive marks in a row wins the game.
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+![Issues](https://img.shields.io/github/issues/mariahrucker/Tic-Tac-Toe)
+
+## Running
+
+* Playing with the AI (difficulty set to hard by default)
+
+```python
+$ python tic_tac_toe.py
+```
+
+* Playing with the AI with difficulty set (easy or hard)
+
+```python
+$ python tic_tac_toe.py -d easy
+```
+
+```python
+$ python tic_tac_toe.py -d hard
+```
+
+* Playing with someone else (take turns in same screen)
+```python
+$ python tic_tac_toe.py -p human
+```
+
+* For more help run
+```python
+$ python tic_tac_toe.py -h
+```
+
+
 ## Functions
 
 ### `print_board()`
@@ -70,7 +102,7 @@ Implementation of Tic Tac Toe requires Python 3.x.
 
 To use this implementation of Tic Tac Toe, simply clone the repository and import the functions into your Python environment.
 
-# Features Development 
+# Features Development
 
 The game could be further developed by adding features such as:
 
